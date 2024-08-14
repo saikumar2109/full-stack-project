@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pass/Fail Candidates</title>
+</head>
+<body>
+    <%- include('layouts/navbar'); -%>
+
+    <div class="masthead">
+        <h1 class="passfail-h1">Pass/Fail Candidates</h1>
+        <div class="passfail-table">
+            <h3>User data with Evaluation Status</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>LastName</th>
+                        <th>Username</th>
+                        <th>Appointment</th>
+                        <th>Test Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.firstName %></td>
+                            <td><%= user.lastName %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.appointment ? "Booked" : "Not Yet" %></td>
+                            <td><%= user.testType ? user.testType : "-" %></td>
+                            <td><%= user.passFail === true ? "Pass" : user.passFail === false ? "Fail" : "Pending" %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <%- include('layouts/footer'); -%>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

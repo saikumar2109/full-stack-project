@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examiner Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <%- include('layouts/navbar'); %>
+        <div class="examiner-page">
+            <h1>Examiner Dashboard</h1>
+            <p>Welcome, <%= user.firstName %>
+                    <%= user.lastName %>
+            </p>
+            <form action="/examiner/filter" method="POST">
+                <label for="testType">Filter by Test Type:</label>
+                <select name="testType" id="testType">
+                    <option value="G2">G2</option>
+                    <option value="G">G</option>
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+            <ul>
+                <% appointments.forEach(appointment=> { %>
+                    <% if (user) { %>
+                        <li>
+                            <div class="appointment-info">
+                                <p>
+                                    <%= appointment.date.toDateString() %> at <%= appointment.time %> - <%=
+                                                user.firstName %>
+                                                <%= user.lastName %>
+                                </p>
+                                <form action="/examiner/comment/<%= user._id %>" method="POST">
+                                    <textarea name="comment" placeholder="Add comment"></textarea>
+                                    <label for="passFail">Pass:</label>
+                                    <input type="radio" name="passFail" value="true">Yes
+                                    <input type="radio" name="passFail" value="false">No
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+                        <% } else { %>
+                            <li>
+                                <%= appointment.date.toDateString() %> at <%= appointment.time %> - No user data
+                                        available
+                            </li>
+                            <% } %>
+                                <% }) %>
+            </ul>
+        </div>
+        <%- include('layouts/footer'); %>
+</body>
+
+</html>

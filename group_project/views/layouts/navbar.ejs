@@ -1,0 +1,66 @@
+    <!-- navbar
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">Book DriveTest</a>
+        </div>
+        <ul>
+            <% if (!user) { %>
+                <li><a  href="/">HOME</a></li>
+                <li><a  href="/login">LOGIN</a></li>
+                <% } else { %>
+                    <li><a  href="/">HOME</a></li>
+                    <li><a  href="/G2">G2_TEST</a></li>
+                    <li><a  href="/G">G_TEST</a></li>
+                    <li><a  href="/logout">LOGOUT</a></li>
+                    <% } %>
+        </ul>
+    </nav> -->
+
+    <!-- views/partials/navbar.ejs -->
+<!-- <nav class="navbar">
+    <div class="logo">
+        <a href="/">Book DriveTest</a>
+    </div>
+    <ul>
+        <% if (!user) { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/login">LOGIN</a></li>
+        <% } else if (user.userType === 'Driver') { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/G2">G2_TEST</a></li>
+            <li><a href="/G">G_TEST</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        <% } else if (user.userType === 'Admin') { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/appointments">APPOINTMENT</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        <% } %>
+    </ul>
+</nav> -->
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="/">Book DriveTest</a>
+    </div>
+    <ul>
+        <% if (!user) { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/login">LOGIN</a></li>
+        <% } else if (user.userType === 'Driver') { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/G2">G2_TEST</a></li>
+            <li><a href="/G">G_TEST</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        <% } else if (user.userType === 'Examiner') { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/examiner">EXAMINER</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        <% } else if (user.userType === 'Admin') { %>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/appointments">APPOINTMENT</a></li>
+            <li><a href="/passfail">PASS/FAIL</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+        <% } %>
+    </ul>
+</nav>
+

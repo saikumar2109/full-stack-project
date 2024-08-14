@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const repeatPassword = document.getElementById('repeatPassword').value;
+            const userType = document.getElementById('userType').value;
+
+            if (!username || !password || !repeatPassword || !userType) {
+                alert("All fields are required!");
+                return false;
+            }
+
+            if (password !== repeatPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <%- include('layouts/navbar'); -%>
+    <div class="main">
+        <div class="containerForm">
+            <h2>Signup</h2>
+            <form action="/signup" method="POST" onsubmit="return validateForm()">
+                <div>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div>
+                    <label for="repeatPassword" class="form-label">Repeat Password</label>
+                    <input type="password" class="form-control" id="repeatPassword" name="repeatPassword" required>
+                </div>
+                <div>
+                    <label for="userType" class="form-label">User Type</label>
+                    <select class="form-select" id="userType" name="userType" required>
+                        <option value="" disabled selected>Select your user type</option>
+                        <option value="Driver">Driver</option>
+                        <option value="Examiner">Examiner</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit">Sign Up</button><br><br>
+                <div>
+                    Already have an account? <a href="/login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

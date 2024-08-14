@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard</title>
+</head>
+<body>
+    <%- include('layouts/navbar'); %>
+    <h1>Driver Dashboard</h1>
+    <p>Welcome, <%= user.firstName %> <%= user.lastName %></p>
+    <% if (user.passFail !== null) { %>
+        <p>Test Result: <%= user.passFail ? 'Pass' : 'Fail' %></p>
+        <p>Comment: <%= user.comment %></p>
+    <% } else { %>
+        <p>Your test is not evaluated yet.</p>
+    <% } %>
+    <%- include('layouts/footer'); %>
+</body>
+</html>

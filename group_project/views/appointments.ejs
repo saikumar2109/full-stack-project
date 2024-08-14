@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Create Appointments</title>
+</head>
+<body>
+  <%- include('layouts/navbar'); %>
+
+  <div class="containerForm">
+    <h2>Create Appointment Slots</h2>
+    <form id="appointmentForm" action="/appointments" method="POST">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+      <fieldset>
+        <legend>Times:</legend>
+        <label><input type="checkbox" name="times" value="9:00 AM"> 9:00 AM</label><br>
+        <label><input type="checkbox" name="times" value="9:30 AM"> 9:30 AM</label><br>
+        <label><input type="checkbox" name="times" value="10:00 AM"> 10:00 AM</label><br>
+        <label><input type="checkbox" name="times" value="10:30 AM"> 10:30 AM</label><br>
+        <label><input type="checkbox" name="times" value="11:00 AM"> 11:00 AM</label><br>
+        <label><input type="checkbox" name="times" value="11:30 AM"> 11:30 AM</label><br>
+        <label><input type="checkbox" name="times" value="12:00 PM"> 12:00 PM</label><br>
+        <label><input type="checkbox" name="times" value="12:30 PM"> 12:30 PM</label><br>
+        <label><input type="checkbox" name="times" value="1:00 PM"> 1:00 PM</label><br>
+        <label><input type="checkbox" name="times" value="1:30 PM"> 1:30 PM</label><br>
+        <label><input type="checkbox" name="times" value="2:00 PM"> 2:00 PM</label>
+      </fieldset>
+      <button type="submit">Create Slots</button>
+    </form>
+  </div>
+
+  <script>
+    // Set the min attribute for the date input to today's date
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const dateInput = document.getElementById('date');
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    });
+
+    // Additional validation before form submission
+    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+      const dateInput = document.getElementById('date').value;
+      const selectedDate = new Date(dateInput);
+      const today = new Date();
+      
+      // Set time to 0 to compare only the date part
+      today.setHours(0, 0, 0, 0);
+      
+      if (selectedDate < today) {
+        alert('Cannot create appointment slots for past dates.');
+        event.preventDefault();
+      }
+    });
+
+  </script>
+  <%- include('layouts/footer') -%>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  
+</body>
+</html>

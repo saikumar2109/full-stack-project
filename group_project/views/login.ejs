@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Page</title>
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+    <%- include('layouts/navbar'); -%>
+    <div class="main">
+        <div class="containerForm">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                </div>
+                <button type="submit">Login</button><br><br>
+                <div>
+                    Don't have an account? <a href="/signup">Sign Up
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
